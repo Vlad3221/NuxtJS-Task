@@ -1,0 +1,139 @@
+@import '@/assets/styles/default.scss';
+
+.article {
+  display: flex;
+  position: relative;
+  width: 100%;
+  align-items: center;
+  justify-content: right;
+  padding: 15px;
+
+  @media (max-width: 766.98px) {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.article__popup-sceleton {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 51, 51, 0.3);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  z-index: 4;
+  backdrop-filter: blur(2px);
+  padding: 0 15px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    overflow: hidden;
+
+    .article__popup-window {
+      transform: translateX(0);
+    }
+  }
+
+  .article__popup-window {
+    display: block;
+    position: relative;
+    min-width: 300px;
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px 0 rgba(0,0,0,.3);
+    border: 1px solid #a9a9a9;
+    transform: translateX(100vh);
+    transition: 0.3s;
+
+    .article__popup-header {
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      padding: 15px;
+
+      .article__popup-title {
+        width: 100%;
+        text-align: center;
+        user-select: none;
+      }
+
+      .article__popup-button-close {
+        position: absolute;
+        border: none;
+        display: flex;
+        align-items: center;
+        background-color: unset;
+        transition: 0.3s;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .article__popup-content {
+      padding: 15px;
+
+      form {
+        input {
+          width: 100%;
+          padding: 5px;
+          border: 1px solid $border-default;
+          display: block;
+          position: relative;
+          border-radius: 4px;
+          transition: 0.3s;
+          margin-top: 10px;
+
+          &:focus {
+            outline: none;
+            border-color: $border-active;
+          }
+        }
+
+        textarea {
+          width: 100%;
+          height: 100%;
+          margin: 10px 0;
+          resize: none;
+          transition: 0.3s;
+          border: 1px solid $border-default;
+          border-radius: 4px;
+          display: block;
+          position: relative;
+          padding: 5px;
+
+          &:focus {
+            outline: none;
+            border-color: $border-active;
+          }
+        }
+      }
+    }
+  }
+}
+
+.article__create-article-button {
+  display: block;
+  position: relative;
+  border: 1px solid $border-button-default;
+  padding: 5px 15px;
+  border-radius: 0.25rem;
+  color: #587746;
+  background-color: rgba(0, 220, 130, 0.3);
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #00DC82;
+    color: white;
+  }
+}
